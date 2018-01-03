@@ -1,58 +1,59 @@
 class Player {
     constructor() {
-        this.player = {
-            xPos: 50,
-            yPos: 485,
-            height: 10,
-            width: 10,
-            score: 0,
-            life: 3,
-            color: "rgba(0,204,102,1)",
-            gravity: 2,
-            gravitySpeed: 0.2,
-            jump: false
-        };
+        this.xPos = 50;
+        this.yPos = 485;
+        this.height = 10;
+        this.width = 10;
+        this.score = 0;
+        this.life = 3;
+        this.color = "rgba(0,204,102,1)";
+        this.gravity = 2;
+        this.gravitySpeed = 0.2;
+        this.jump = false;
         this.key = true
     }
 
     move(movement) {
 
         if (movement.up && this.key === true) {
-            this.player.jump = true;
+            this.jump = true;
             this.key = false;
         }
 
-        if (this.player.jump === true) {
-            console.log(this.player.yPos);
-            this.player.gravitySpeed += this.player.gravity;
-            this.player.yPos -= 30 - this.player.gravitySpeed;
+        if (this.jump === true) {
+            console.log(this.yPos);
+            this.gravitySpeed += this.gravity;
+            this.yPos -= 30 - this.gravitySpeed;
             this.key = false;
         }
 
-        if (this.player.yPos > 485) {
-            this.player.yPos = 485;
-            this.player.gravitySpeed = 0.5;
+        if (this.yPos > 485) {
+            this.yPos = 485;
+            this.gravitySpeed = 0.5;
             this.key = true;
-            this.player.jump = false;
+            this.jump = false;
         }
 
         this.collision();
+    }
+    increaseScore(){
+        this.score++;
     }
 
     collision(particle) {
         if (!particle) return;
 
-        if ((particle.x + particle.width >= this.player.xPos)
-            && (particle.x <= this.player.xPos + this.player.width)
-            && (particle.y + particle.height >= this.player.yPos)
-            && (particle.y <= this.player.yPos + this.player.height)
+        if ((particle.x + particle.width >= this.xPos)
+            && (particle.x <= this.xPos + this.width)
+            && (particle.y + particle.height >= this.yPos)
+            && (particle.y <= this.yPos + this.height)
         ) {
-            this.player.life = this.player.life - 1;
-            console.log(this.player.life);
-            this.player.score = 0;
-            this.player.color = "rgba(200,0,0,1)";
+            this.life = this.life - 1;
+            console.log(this.life);
+            this.score = 0;
+            this.color = "rgba(200,0,0,1)";
             setTimeout(()=> {
-                this.player.color = "rgba(0,254,0,1)";
+                this.color = "rgba(0,254,0,1)";
             }, 100);
             return true;
         }
@@ -61,19 +62,19 @@ class Player {
 
     get pos1() {
         return {
-            x: this.player.xPos,
-            y: this.player.yPos,
-            width: this.player.width,
-            height: this.player.height,
-            color: this.player.color,
+            x: this.xPos,
+            y: this.yPos,
+            width: this.width,
+            height: this.height,
+            color: this.color,
 
         };
     }
 
     get pos3() {
         return {
-            score: this.player.score,
-            life: this.player.life
+            score: this.score,
+            life: this.life
         };
     }
 }

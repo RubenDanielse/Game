@@ -7,6 +7,7 @@ const CanvasView = require("./CanvasView.es6");
 class Controller {
     constructor() {
         this.player = new Player();
+        console.log(this.player);
         this.enemy = new Enemy();
         this.particles = [];
         this.key = new KeyView();
@@ -14,18 +15,16 @@ class Controller {
 
         this.lastPush = Date.now();                 // Huidige tijd
         this.interval = Math.random() * 2000;       // Random getal tussen 0 en 2000
-
-        this.score = 0;                             // Zet score
-        this.life = 4;
         this.hardness = 0;                          // Zet moeilijkheidsgraad
     }
     loop() {
         this.canvas.clear();
         this.player.move(this.key.location);
+        this.player.increaseScore();
         this.enemy.move(this.canvas.bounds);
         this.canvas.drawPlayer(this.player.pos1);
         this.canvas.drawEnemy(this.enemy.pos2);
-        this.canvas.drawScore(this.score);
+        this.canvas.drawScore(this.player.score);
         this.canvas.drawLife(this.player.life);
 
         if (Date.now() - this.lastPush > this.interval){
@@ -38,9 +37,7 @@ class Controller {
             console.log("new")
         }
 
-        this.score = this.score + 1;
-
-        this.hardness = 3+this.score/500;
+        this.hardness = 3+this.player.score/500;
 
         this.particles.forEach((part) => {
             part.move();
