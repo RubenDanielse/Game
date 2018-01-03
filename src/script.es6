@@ -13,7 +13,6 @@ class Controller {
         this.particles = [];
         this.key = new KeyView();
         this.canvas = new CanvasView();
-
         this.lastPush = Date.now();                 // Huidige tijd
         this.interval = Math.random() * 2000;       // Random getal tussen 0 en 2000
         this.hardness = 0;                          // Zet moeilijkheidsgraad
@@ -60,9 +59,9 @@ class Controller {
     }
 }
 
-const control = new Controller();
-window.onload = () => {
-    document.body.appendChild(StartButton());
-}
 
-control.loop();
+window.onload = () => {
+    const control = new Controller();
+    // voert control.loop uit wanneer de startbutton klaar is met aftellen
+    document.body.appendChild(StartButton(() => control.loop()));
+}
