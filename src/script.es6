@@ -3,7 +3,9 @@ const Enemy = require("./Enemy.es6");
 const Particles = require("./particles.es6");
 const KeyView = require("./KeyView.es6");
 const CanvasView = require("./CanvasView.es6");
+import StartButton from './StartButton'
 
+import './style.css';
 class Controller {
     constructor() {
         this.player = new Player();
@@ -59,22 +61,8 @@ class Controller {
 }
 
 const control = new Controller();
+window.onload = () => {
+    document.body.appendChild(StartButton());
+}
 
-const StartButton = document.getElementById('start');
-
-StartButton.innerHTML = 'START';
-StartButton.onclick = function(){
-    StartButton.onclick = undefined;
-    let count = 3;
-    const delay = 1000;
-    const timer = setInterval(() => {
-        if (count === 0) {
-            clearInterval(timer);
-            control.loop();
-            StartButton.classList.add('class', 'hidden')
-        }
-        StartButton.innerHTML = count--;
-    }, delay)
-};
-
-//control.loop();
+control.loop();
