@@ -7,7 +7,6 @@ const CanvasView = require("./CanvasView.es6");
 class Controller {
     constructor() {
         this.player = new Player();
-        console.log(this.player);
         this.enemy = new Enemy();
         this.particles = [];
         this.key = new KeyView();
@@ -34,7 +33,7 @@ class Controller {
 
             this.lastPush = Date.now();             // Zet nieuwe huidige tijd
             this.interval = Math.random() * 2000;   // Zet nieuw random getal
-            console.log("new")
+        //    console.log("new")
         }
 
         this.hardness = 3+this.player.score/500;
@@ -60,7 +59,22 @@ class Controller {
 }
 
 const control = new Controller();
-control.loop();
 
-setInterval(() => {
-}, 3000);
+const StartButton = document.getElementById('start');
+
+StartButton.innerHTML = 'START';
+StartButton.onclick = function(){
+    StartButton.onclick = undefined;
+    let count = 3;
+    const delay = 1000;
+    const timer = setInterval(() => {
+        if (count === 0) {
+            clearInterval(timer);
+            control.loop();
+            StartButton.classList.add('class', 'hidden')
+        }
+        StartButton.innerHTML = count--;
+    }, delay)
+};
+
+//control.loop();

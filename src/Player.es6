@@ -6,7 +6,7 @@ class Player {
         this.width = 10;
         this.score = 0;
         this.life = 3;
-        this.color = "rgba(0,204,102,1)";
+        this.color = "rgba(0,250,50,1)";
         this.gravity = 2;
         this.gravitySpeed = 0.2;
         this.jump = false;
@@ -50,10 +50,9 @@ class Player {
         ) {
             this.life = this.life - 1;
             console.log(this.life);
-            this.score = 0;
             this.color = "rgba(200,0,0,1)";
             setTimeout(()=> {
-                this.color = "rgba(0,254,0,1)";
+                this.color = "rgba(0,250,50,1)";
             }, 100);
             return true;
         }

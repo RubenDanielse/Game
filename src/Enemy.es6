@@ -1,48 +1,46 @@
 class Enemy {
     constructor() {
-        this.enemy = {
-            xPos: 625,
-            yPos: 475,
-            height: 20,
-            width: 20,
-            color: "rgba(200,200,0,1)",
-            xvel: 0,
-            yvel: 0
-        };
+            this.xPos = 625;
+            this.yPos = 475;
+            this.height = 20;
+            this.width = 20;
+            this.color = "rgba(200,0,0,1)";
+            this.xvel = 0;
+            this.yvel = 0
     }
 
     get pos2() {
         return {
-            x: this.enemy.xPos,
-            y: this.enemy.yPos,
-            width: this.enemy.width,
-            height: this.enemy.height,
-            color: this.enemy.color
+            x: this.xPos,
+            y: this.yPos,
+            width: this.width,
+            height: this.height,
+            color: this.color
         };
     }
 
     move(bounds) {
-        this.enemy.xPos += this.enemy.xvel;
-        this.enemy.yPos += this.enemy.yvel;
+        this.xPos += this.xvel;
+        this.yPos += this.yvel;
 
-        if (this.enemy.xPos + this.enemy.width > bounds.width)
+        if (this.xPos + this.width > bounds.width)
         {
-            this.enemy.xPos = bounds.width - this.enemy.width;
-            this.enemy.xvel *= -1;
-        } else if (this.enemy.xPos < 0 )
+            this.xPos = bounds.width - this.width;
+            this.xvel *= -1;
+        } else if (this.xPos < 0 )
         {
-            this.enemy.xPos = 0;
-            this.enemy.xvel *= -1;
+            this.xPos = 0;
+            this.xvel *= -1;
         }
-        if (this.enemy.yPos + this.enemy.height > bounds.height)
+        if (this.yPos + this.height > bounds.height)
         {
-            this.enemy.yPos = bounds.height - this.enemy.height;
-            this.enemy.yvel *= -1;
+            this.yPos = bounds.height - this.height;
+            this.yvel *= -1;
 
-        } else if (this.enemy.yPos < 0 )
+        } else if (this.yPos < 0 )
         {
-            this.enemy.yPos = 0;
-            this.enemy.yvel *= -1;
+            this.yPos = 0;
+            this.yvel *= -1;
         }
     }
 }

@@ -11,11 +11,13 @@ class CanvasView {
     }
 
     drawScore(score) {
-        this.ctx.font = '30px serif';
+        this.ctx.font = '20px arial';
+        this.ctx.fillStyle = 'blue';
         this.ctx.fillText('Score = '+ score, 30, 50)
     }
     drawLife(life) {
-        this.ctx.font = '25px arial';
+        this.ctx.font = '20px arial';
+        this.ctx.fillStyle = 'blue';
         this.ctx.fillText('Lifes = '+ life, 30, 100)
     }
     drawPlayer(pos1) {
