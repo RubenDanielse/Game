@@ -1,0 +1,11 @@
+
+body {
+  font-size: 100%;
+  font-family: Helvetica, sans-serif;
+  color: #f0f;
+}
+
+#myCanvas {
+  background-color: grey;
+  border: 2px solid black;
+}

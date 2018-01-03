@@ -1,7 +1,32 @@
 {
-  "name": "Game",
+  "name": "game",
   "version": "0.0.1",
   "dependencies": {
-    
+    "eslint": "^4.14.0",
+    "open": "0.0.5",
+    "webpack": "^3.10.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RubenDanielse/Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RubenDanielse/Game/issues"
+  },
+  "homepage": "https://github.com/RubenDanielse/Game#readme",
+  "description": "",
+  "devDependencies": {
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
   }
 }
